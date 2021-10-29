@@ -63,7 +63,6 @@
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}}"></script>
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
 
-
 {{-- //toster --}}
 <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>

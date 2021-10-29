@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+// use App\Models\Brand;
+use App\Models\Catagory;
+use App\Models\Product;
+use App\Models\Slider;
+use App\Models\SubCatagory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +17,10 @@ class IndexController extends Controller
 {
     public function  index()
     {
-        return view('frontend.index');
+      $products=Product::where('status',1)->orderBy('id','DESC')->get();
+        $sliders=Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
+        $categories=Catagory::orderBy('catagory_name_eng','ASC')->get();
+        return view('frontend.index',compact('categories','sliders','products'));
     }
     public function UserLogOut()
     {

@@ -49,12 +49,24 @@
 
 
 	<!-- Vendor JS -->
+
 	<script src="{{ asset('backend/js/vendors.min.js') }} "></script>
     <script src="{{ asset('/assets/icons/feather-icons/feather.min.js') }}"></script>
 	<script src="{{ asset('/assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
 	<script src="{{ asset('/assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
-	<script src="{{ asset('/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+{{-- //tags input --}}
+    <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
+     {{-- end of tags --}}
 
+{{-- ck editor --}}
+
+<script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+<script src="{{ asset('backend/js/pages/editor.js') }}"></script>
+{{-- end of ckeditor --}}
+	<script src="{{ asset('/assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+	<script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
@@ -84,5 +96,34 @@
          @endif
      </script>
 
+
 </body>
 </html>
+<script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(function(){
+        $(document).on('click','#delete',function(e)
+        {
+            e.preventDefault();
+            var link=$(this).attr("href");
+               Swal.fire({
+          title: 'Are you sure?',
+         text: "Delte This Data!",
+     icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href=link
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+});
+    });
+</script>
